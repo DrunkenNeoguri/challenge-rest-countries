@@ -12,7 +12,7 @@ export default function SearchBar(props: SearchBarPropType) {
   return (
     <TextField.Root placeholder="Search for a country..." size="3">
       <TextField.Slot>
-        {/* {!darkMode ? <LightSearchIcon /> : <DarkSearchIcon />} */}
+        {!darkMode ? <LightSearchIcon /> : <DarkSearchIcon />}
       </TextField.Slot>
     </TextField.Root>
   );
