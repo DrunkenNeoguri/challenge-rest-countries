@@ -1,5 +1,5 @@
-import Layout from "./region/layout";
-import Region from "./region/page";
+import Layout from "./nation/layout";
+import Region from "./nation/page";
 
 export default function Home() {
   return (

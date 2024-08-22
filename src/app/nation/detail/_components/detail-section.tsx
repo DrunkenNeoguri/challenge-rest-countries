@@ -8,7 +8,7 @@ import {
   Text,
 } from "@radix-ui/themes";
 
-export default function DetailSection() {
+export default function DetailSection(props: NationType) {
   return (
     <Section>
       <Flex direction="column">

@@ -5,7 +5,7 @@ import { DarkModeContext } from "@/providers/dark-mode-proivder";
 import { Flex } from "@radix-ui/themes";
 import { useContext } from "react";
 
-export default function RegionSearchFilter() {
+export default function NationSearchFilter() {
   const { darkMode } = useContext(DarkModeContext);
 
   return (

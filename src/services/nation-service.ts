@@ -13,30 +13,30 @@ export class NationService {
       params.region = request.region;
     }
 
-    const response = await clientAPI.get("region", {
+    const response = await clientAPI.get("nation", {
       searchParams: params,
     });
     return response.json() as Promise<NationType[]>;
   }
 
-  static async PostRegionList(request: {
-    keyword?: string;
-    region?: RegionType;
-  }) {
-    const formData = new FormData();
-    if (request.keyword) {
-      formData.append("keyword", request.keyword);
-    }
+  // static async PostRegionList(request: {
+  //   keyword?: string;
+  //   region?: RegionType;
+  // }) {
+  //   const formData = new FormData();
+  //   if (request.keyword) {
+  //     formData.append("keyword", request.keyword);
+  //   }
 
-    if (request.region) {
-      formData.append("region", request.region);
-    }
-    const response = await clientAPI.post("region", { body: formData });
-    return response.json() as Promise<NationType[]>;
-  }
+  //   if (request.region) {
+  //     formData.append("region", request.region);
+  //   }
+  //   const response = await clientAPI.post("nation", { body: formData });
+  //   return response.json() as Promise<NationType[]>;
+  // }
 
   static async GetNationDetail(request: { name: string }) {
-    const response = await clientAPI.get("region/detail", {
+    const response = await clientAPI.get("nation/detail", {
       searchParams: { name: request.name },
     });
     return response.json() as Promise<NationType>;
