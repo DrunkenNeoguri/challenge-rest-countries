@@ -1,19 +1,26 @@
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  Heading,
-  Inset,
-  Strong,
-  Text,
-} from "@radix-ui/themes";
+import { Card, Flex, Inset, Strong, Text } from "@radix-ui/themes";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-export default function NationCard(props: RegionType) {
+export default function NationCard(props: NationType) {
   const { name, population, region, capital, flag = props.flags.png } = props;
+  const router = useRouter();
+
+  const handleMoveToDetail = () => {
+    return router.push(`/region/detail?name=${name}`);
+  };
+
   return (
-    <Flex direction="column" width="264px" height="336px">
+    <Flex
+      direction="column"
+      width="264px"
+      height="336px"
+      role="button"
+      onClick={handleMoveToDetail}
+      style={{
+        cursor: "pointer",
+      }}
+    >
       <Card size="1">
         <Inset clip="padding-box" side="top" pb="0">
           <Image
