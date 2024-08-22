@@ -1,0 +1,44 @@
+import { clientAPI } from "./api";
+
+export class NationService {
+  static async GetRegionList(request: {
+    keyword?: string;
+    region?: RegionType;
+  }) {
+    const params = { keyword: "", region: "" };
+    if (request.keyword) {
+      params.keyword = request.keyword;
+    }
+    if (request.region) {
+      params.region = request.region;
+    }
+
+    const response = await clientAPI.get("region", {
+      searchParams: params,
+    });
+    return response.json() as Promise<NationType[]>;
+  }
+
+  static async PostRegionList(request: {
+    keyword?: string;
+    region?: RegionType;
+  }) {
+    const formData = new FormData();
+    if (request.keyword) {
+      formData.append("keyword", request.keyword);
+    }
+
+    if (request.region) {
+      formData.append("region", request.region);
+    }
+    const response = await clientAPI.post("region", { body: formData });
+    return response.json() as Promise<NationType[]>;
+  }
+
+  static async GetNationDetail(request: { name: string }) {
+    const response = await clientAPI.get("region/detail", {
+      searchParams: { name: request.name },
+    });
+    return response.json() as Promise<NationType>;
+  }
+}
