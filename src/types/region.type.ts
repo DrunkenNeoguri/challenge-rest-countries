@@ -1,4 +1,4 @@
-type RegionType = {
+type NationType = {
   name: string;
   topLevelDomain: string[];
   alpha2Code: string;
@@ -55,3 +55,5 @@ type RegionType = {
   cioc: string;
   independent: boolean;
 };
+
+type RegionType = "Africa" | "America" | "Asia" | "Europe" | "Oceania";
