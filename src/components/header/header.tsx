@@ -5,7 +5,7 @@ import { Button, Flex, Heading } from "@radix-ui/themes";
 import { useContext } from "react";
 
 export default function Header() {
-  const { darkMode } = useContext(DarkModeContext);
+  const { darkMode, handleDarkMode } = useContext(DarkModeContext);
 
   return (
     <Flex
@@ -24,7 +24,7 @@ export default function Header() {
       }}
     >
       <Heading as="h1">Where in the World?</Heading>
-      <Button>
+      <Button type="button" title="Change Screen Mode" onClick={handleDarkMode}>
         {!darkMode ? <LightModeIcon /> : <DarkModeIcon />} Dark Mode
       </Button>
     </Flex>
