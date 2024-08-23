@@ -1,7 +1,7 @@
 import { clientAPI } from "./api";
 
 export class NationService {
-  static async GetRegionList(request: {
+  static async GetNationList(request: {
     keyword?: string;
     region?: RegionType;
   }) {
@@ -13,10 +13,20 @@ export class NationService {
       params.region = request.region;
     }
 
-    const response = await clientAPI.get("nation", {
-      searchParams: params,
+    const response = await clientAPI
+      .get("nation", {
+        searchParams: params,
+      })
+      .json();
+
+    return response;
+  }
+
+  static async GetNationDetail(request: { name: string }) {
+    const response = await clientAPI.get("nation/detail", {
+      searchParams: { name: request.name },
     });
-    return response.json() as Promise<NationType[]>;
+    return response.json() as Promise<NationType>;
   }
 
   // static async PostRegionList(request: {
@@ -34,11 +44,4 @@ export class NationService {
   //   const response = await clientAPI.post("nation", { body: formData });
   //   return response.json() as Promise<NationType[]>;
   // }
-
-  static async GetNationDetail(request: { name: string }) {
-    const response = await clientAPI.get("nation/detail", {
-      searchParams: { name: request.name },
-    });
-    return response.json() as Promise<NationType>;
-  }
 }

@@ -4,22 +4,14 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function useNationListQuery() {
-  const [regionList, setRegionList] = useState<NationType[]>();
   const searchParams = useSearchParams();
   const keyword = searchParams.get("keyword") ?? undefined;
   const region = (searchParams.get("region") as RegionType) ?? undefined;
 
-  const { refetch } = useQuery<NationType[]>({
-    queryKey: ["nation/list"],
-    queryFn: () => NationService.GetRegionList({ keyword, region }),
-    onSuccess: (data) => {
-      setRegionList(data);
-    },
+  const { data: nationList } = useQuery({
+    queryKey: ["nation/list", { keyword, region }],
+    queryFn: async () => await NationService.GetNationList({ keyword, region }),
   });
 
-  useEffect(() => {
-    refetch();
-  }, [searchParams, refetch]);
-
-  return regionList;
+  return nationList;
 }
