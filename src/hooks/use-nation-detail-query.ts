@@ -6,8 +6,8 @@ export default function useNationLDetailQuery() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") ?? "";
 
-  const { data } = useQuery<NationType>({
-    queryKey: ["nation/list"],
+  const { data } = useQuery({
+    queryKey: ["nation/list", { name }],
     queryFn: () => NationService.GetNationDetail({ name }),
   });
 
