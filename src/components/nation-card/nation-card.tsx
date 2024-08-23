@@ -1,4 +1,4 @@
-import { Card, Flex, Inset, Strong, Text } from "@radix-ui/themes";
+import { Box, Card, Flex, Inset, Strong, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -28,12 +28,9 @@ export default function NationCard(props: NationType) {
             src={flag}
             width={264}
             height={162}
-            // style={{
-            //   backgroundRepeat: "no-repeat",
-            //   backgroundSize: "cover",
-            //   width: 264,
-            //   height: 162,
-            // }}
+            style={{
+              objectFit: "cover",
+            }}
           />
         </Inset>
 

@@ -19,7 +19,7 @@ export class NationService {
       })
       .json();
 
-    return response;
+    return response as Promise<NationType[]>;
   }
 
   static async GetNationDetail(request: { name: string }) {
