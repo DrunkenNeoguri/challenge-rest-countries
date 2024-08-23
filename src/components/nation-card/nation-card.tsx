@@ -7,7 +7,7 @@ export default function NationCard(props: NationType) {
   const router = useRouter();
 
   const handleMoveToDetail = () => {
-    return router.push(`/region/detail?name=${name}`);
+    return router.push(`/nation/detail?name=${name}`);
   };
 
   return (
@@ -51,7 +51,7 @@ export default function NationCard(props: NationType) {
                 {`${region}`}
               </Text>
               <Text style={{ fontSize: "14px", lineHeight: "18px" }}>
-                <Strong>Region: </Strong>
+                <Strong>Capital: </Strong>
                 {`${capital}`}
               </Text>
             </Flex>
